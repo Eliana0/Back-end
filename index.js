@@ -1,23 +1,37 @@
 const express = require("express")
-const menu = './menu.json'
 const app = express()
-const fs = require('fs')
+const productos = './productos.txt'
 
-const Contenedor = require('./Cont.js')
+const Contenedor = require('./Content.js')
 const contenedor = new Contenedor()
 
 const servidor = app.listen(8080, ()=> console.log("hola"))
 
-contenedor.getAll()
+app.use(express.json())
+
+let archivo = {
+    nombre: "Tarta",
+    ingredientes: ["pascualina", "tomate", "queso", "jamón", "huevo", "cebolla"],
+    precio: 800
+}
+
+app.get('/api/productos', (req, res)=> {
+    contenedor.getAll()
     .then(result => 
-        app.get('/productos', (request, response)=> {
-        response.send(result)
-    }))
+        res.send(result)
+    )})
 
-contenedor.productoRandom()
+app.get('/api/productos/:id', (req, res)=> {
+    let Number = 2;
+    contenedor.getById(Number)
     .then(result => 
-        app.get('/productoRandom', (request, response)=> {
-            response.send(result)})
-)
+        res.send(result)
+    )})
 
-
+app.post('/api/productos', (req, res)=> {
+    let { nombre, ingredientes, precio } = req.body
+    productos = productos.concat(`{${ nombre, ingredientes, precio }}`)
+    console.log(productos)
+/*     res.send(req.body)
+    console.log({ nombre, ingredientes, precio }) */
+    })  
