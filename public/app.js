@@ -1,8 +1,8 @@
 let formPlato = document.getElementById("formPlato");
 
-const handlerSubmit = (evt, form, rout) => {
+const handlerSubmit = (evt, form, ruta) => {
     evt.preventDefault()
-    let formData = new formData(form);
+    let formData = new FormData(form);
     let obj = {}
     formData.forEach((value, key) => obj[key]= value);
     fetch(ruta, {
@@ -17,4 +17,4 @@ const handlerSubmit = (evt, form, rout) => {
     .catch(err => console.log(err))
 }
 
-formPlato.addEventListener(`submit`, handlerSubmit(e, e.target, `/productos`))
+formPlato.addEventListener(`submit`, (e) => handlerSubmit(e, e.tatget, `/productos`))
