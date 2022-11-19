@@ -1,10 +1,10 @@
-let formPlato = document.getElementById("formPlato");
+/* let formPlato = document.getElementById("formPlato")
 
-const handlerSubmit = (evt, form, ruta) => {
-    evt.preventDefault()
+const handelrSubmit = (evt, form, ruta) => {
+    evt.preventDefault();
     let formData = new FormData(form);
-    let obj = {}
-    formData.forEach((value, key) => obj[key]= value);
+    let obj = {};
+    formData.forEach((value, key) => obj[key]= value)
     fetch(ruta, {
         method: "POST",
         body: JSON.stringify(obj),
@@ -17,4 +17,4 @@ const handlerSubmit = (evt, form, ruta) => {
     .catch(err => console.log(err))
 }
 
-formPlato.addEventListener(`submit`, (e) => handlerSubmit(e, e.tatget, `/productos`))
+formPlato.addEventListener("submit", (e) => handelrSubmit(e, e.target, "/api/productos")) */

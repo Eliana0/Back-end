@@ -1,5 +1,5 @@
 [
-    {
+  {
     "nombre": "Flan",
     "ingredientes": [
       "azucar",
@@ -8,6 +8,7 @@
       "caramelo",
       "crema"
     ],
+    "foto": "https://th.bing.com/th/id/R.1528ec1e2d18e1ecd13df4d855e15124?rik=cyJxqLiod1zz4g&pid=ImgRaw&r=0",
     "precio": 900,
     "id": 1
   },
@@ -20,6 +21,7 @@
       "oregano",
       "aceituna"
     ],
+    "foto": "https://th.bing.com/th/id/R.04e8468107b1d1527b88aa703c2067fe?rik=iNk79rzOu73sEw&pid=ImgRaw&r=0",
     "precio": 1500,
     "id": 2
   },
@@ -32,6 +34,7 @@
       "lechuga",
       "tomate"
     ],
+    "foto": "https://th.bing.com/th/id/R.f9bb03c6cca539df7b4a0c943c3e87cf?rik=xNZbflDfnYOfmQ&pid=ImgRaw&r=0",
     "precio": 1400,
     "id": 3
   },
@@ -43,6 +46,7 @@
       "queso",
       "papas fritas"
     ],
+    "foto": "https://lachimenearestaurante.com.ar/wp-content/uploads/2020/05/Milanesa-a-la-Napolitana-2048x1367.jpg",
     "precio": 1800,
     "id": 4
   },
@@ -56,7 +60,21 @@
       "rúcula",
       "cebolla"
     ],
+    "foto": "https://th.bing.com/th/id/R.1e6901a6500d38e49b2c93e3b300e226?rik=r4Jb7aC%2fFfzVPw&pid=ImgRaw&r=0&sres=1&sresct=1",
     "precio": 1000,
     "id": 5
+  },
+  {
+    "nombre": "Tarta",
+    "ingredientes": [
+      "pascualina",
+      "tomate",
+      "queso",
+      "jamón",
+      "huevo",
+      "cebolla"
+    ],
+    "precio": 800,
+    "id": 6
   }
 ]
