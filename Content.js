@@ -26,43 +26,45 @@ class Contenedor {
             let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
             return read
         }else {
-            return "No se ha encontrado archivos"
+            return {message: "No se ha encontrado el elemento"}
         }
     }    
     getById = async(Number) => {
         if(fs.existsSync(menu)){
             let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
-            let encuentraId = read.find(obj => obj.id === Number)
+            let encuentraId = read.find(e => e.id == Number)
             return encuentraId
         }else {
-            return "No se ha encontrado el elemento"
+            return {message: "No se ha encontrado el elemento"} 
         }
     }
-    actualizaById = async(id) => {
+    actualizaById = async(Number, product, archivo) => {
+        if(fs.existsSync(menu)){
         let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
-        let index = read.findIndex(product => product.id == id);
-           if(index >= 0){
-               read[index] = product;
-               this.write(read, file);
-               console.log('Actualizado');
-           }else{
-               console.log('No se encontro el producto');
-           }
+         let encuentraId = read.findIndex(e => e.id == Number);
+                read[encuentraId] = product;
+                fs.writeFileSync(archivo, JSON.stringify(read));
+                return {message: "producto actualizado"};
+        }else {
+            return {message: "No se ha actualizado el elemento"} 
+        }
     }
     deleteById = async(Number, archivo) => {
-        let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
+        if(fs.existsSync(menu)){
+        let read = JSON.parse(await fs.promises.readFile(menu, `utf-8`));
         let encuentraId = read.findIndex(e => e.id == Number);
-        if(encuentraId){
             read.splice(encuentraId, 1);
-            let json = JSON.stringify(read);
             try{
-                fs.writeFileSync(archivo, json);
+                fs.writeFileSync(archivo, JSON.stringify(read));
                 return Number
             }
             catch(err){
-                console.log('Error en la escritura', err);
+                return {status: "error", message: err.message};
             }
-        }
+        } else {
+            return {message: "No se ha encontrado el elemento"} 
+        }   
     }
 }
+
 module.exports = Contenedor

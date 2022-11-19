@@ -35,17 +35,15 @@ app.post('/api/productos', (req, res)=> {
 })
 
 app.put('/api/productos/:id', (req, res) => {
-    const Number = req.params.id;
-    const { body } = req;
-    let content = contenedor.getById(parseInt(Number))
-    .then(result => 
-        res.send(result))
-    content ? contenedor.actualizaById(Number, body, productos) : res.json({message: 'Producto no encontrado. Id: '+ Number});
+    const Number  = req.params.id;
+    const body = req.body;
+   /*  contenedor.getById(parseInt(Number), productos); */
+    contenedor.actualizaById(Number ,body, productos) 
     res.json({message: 'Producto actualizado', producto: body});
 })
 
 app.delete('/api/productos/:id', (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     let content = contenedor.deleteById(parseInt(id), productos);
     content ? res.json({message: `${id} eliminado`}) : res.json({message: `No se encuentra el producto`})
 })
