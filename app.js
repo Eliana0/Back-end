@@ -1,12 +1,9 @@
-/* const express = require("express")
-const productos = require("./api/productos")
-const productosID = require("./api/productosID")
+const express = require("express")
 const app = express()
+const productosApi = require(`./api/productos.js`)
 
-const server = app.listen(8080, () => console.log("hola"))
+const servidor = app.listen(8080, ()=> console.log("hola"))
 
 app.use(express.json())
 app.use('/api', express.static("public"))
-app.use('/api/productos', productos)
-app.use('/api/productosID', productosID) */
-
+app.use('/api/productos', productosApi)

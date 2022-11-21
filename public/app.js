@@ -1,4 +1,4 @@
-/* let formPlato = document.getElementById("formPlato")
+let formPlato = document.getElementById("formPlato")
 
 const handelrSubmit = (evt, form, ruta) => {
     evt.preventDefault();
@@ -17,4 +17,4 @@ const handelrSubmit = (evt, form, ruta) => {
     .catch(err => console.log(err))
 }
 
-formPlato.addEventListener("submit", (e) => handelrSubmit(e, e.target, "/api/productos")) */
+formPlato.addEventListener("submit", (e) => handelrSubmit(e, e.target, "/api/"))
