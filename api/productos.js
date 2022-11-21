@@ -19,29 +19,45 @@ router.get('/', (req, res)=> {
 )})
 
 router.post('/', (req, res)=> {
-    const body = req.body;
-    contenedor.Save(archivo);
-    res.json({message: "Producto guardado", producto: body})
+    let body = req.body;
+    if (!body.nombre || !body.foto || !body.precio){
+        res.json({message: "Rellene los campos solicitados"})
+    } else{
+        contenedor.Save(archivo);
+        res.json({message: "Producto guardado", producto: body}) 
+    }
 })
 
 router.get('/:id', (req, res)=> {
     const Number = req.params.id;
-    contenedor.getById(parseInt(Number))
-    .then(result => 
-        res.send(result))
+    if(!Number){
+        res.json({message: "Producto no encontrado"})
+    }else{
+        contenedor.getById(parseInt(Number))
+        .then(result => 
+            res.send(result))
+    }
 })
 
 router.put('/:id', (req, res) => {
     const Number  = req.params.id;
     const body = req.body;
-    contenedor.actualizaById(Number ,body, productos) 
-    res.json({message: 'Producto actualizado', producto: body});
+    if(!body){
+        res.json({message: 'Producto no encontrado'})
+    }else{
+        contenedor.actualizaById(Number ,body, productos) 
+        res.json({message: 'Producto actualizado', producto: body});
+    }
 })
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    let content = contenedor.deleteById(parseInt(id), productos);
-    content ? res.json({message: `${id} eliminado`}) : res.json({message: `No se encuentra el producto`})
+    if(!id){
+        res.json({message: 'Producto no encontrado'})
+    }else{
+        let content = contenedor.deleteById(parseInt(id), productos);
+        content ? res.json({message: `${id} eliminado`}) : res.json({message: `No se encuentra el producto`})
+    }
 })
 
 

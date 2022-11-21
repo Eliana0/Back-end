@@ -1,11 +1,11 @@
 let formPlato = document.getElementById("formPlato")
 
-const handelrSubmit = (evt, form, ruta) => {
+const handelrSubmit = (evt, form, route) => {
     evt.preventDefault();
     let formData = new FormData(form);
     let obj = {};
     formData.forEach((value, key) => obj[key]= value)
-    fetch(ruta, {
+    fetch(route, {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
@@ -17,4 +17,4 @@ const handelrSubmit = (evt, form, ruta) => {
     .catch(err => console.log(err))
 }
 
-formPlato.addEventListener("submit", (e) => handelrSubmit(e, e.target, "/api/"))
+formPlato.addEventListener("submit", (e) => handelrSubmit(e, e.target, "/api/productos"))
