@@ -17,39 +17,6 @@ let storage = multer.diskStorage({
     }
 })
 
-/* app.engine('Plantilla', (filepath, obj, callback) => {
-    fs.readFile(filepath, (err, data) => {
-        if (err){
-            return callback(new Error(err))
-        }
-            const template = data.toString()
-                .replace('^^titulo$$', '' + obj.titulo)
-                .replace('^^mensaje$$', '' + obj.mensaje)
-                .replace('^^autor$$', '' + obj.autor)
-                .replace('^^version$$', '' + obj.version)
-            return callback(null, template)
-    })
-})
-app.set(`views`, `./views`)
-app.set(`view engine`, `Plantilla`)
-app.get(`/`, (req, res) => {
-    res.render(`Buenvenida`, {
-        titulo: '(jajaja)',
-        mensaje: '(Este es un mensaje)',
-        autor: '(JKROWLING)',
-        version: 22
-    })
-}) */
-
-/* app.engine('handlebars', handlebars.engine())
-app.set(`views`, `./views`)
-app.set(`view engine`, `handlebars`)
-app.get('/home', (req, res) => {
-    res.render('home')
-})
-app.get('/productos', (req, res) => {
-    res.render('productos')
-}) */
 
 app.engine('handlebars', handlebars.engine())
 app.set(`views`, `./views`)

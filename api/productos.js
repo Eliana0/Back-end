@@ -5,12 +5,11 @@ const productos = './productos.txt'
 
 const Contenedor = require('../Content.js')
 const contenedor = new Contenedor()
+const handlebars = require('express-handlebars')
 
-let archivo = {
-/*     nombre:"Cheescake",
-    foto: "https://th.bing.com/th/id/OIP.HpIhsZagu3bqCVvbtKMclQHaE8?pid=ImgDet&w=4608&h=3072&rs=1",
-    precio: 800 */
-}
+archivo = [
+    
+]
 
 router.get('/', (req, res)=> {
     contenedor.getAll()
