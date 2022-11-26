@@ -1,10 +1,6 @@
 const express = require("express")
 const app = express()
 const multer = require("multer")
-const productosApi = require(`./api/productos.js`)
-const fs = require('fs')
-
-const handlebars = require('express-handlebars')
 
 const servidor = app.listen(8080, ()=> console.log("hola"))
 
@@ -17,44 +13,28 @@ let storage = multer.diskStorage({
     }
 })
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-app.engine('handlebars', handlebars.engine())
-app.set(`views`, `./views`)
-app.set(`view engine`, `handlebars`)
+const productos = []
 
-let productos = [
-    {
-        nombre: "Eliana",
-        apellido: "Cristaldo",
-        telefono: 123456,
-        mail: "jajaja@gmail.com"
-    },
-    {
-        nombre: "Hermione",
-        apellido: "Granger",
-        telefono: 123456,
-        mail: "hermione@gmail.com" 
-    },
-    {
-        nombre: "Harry",
-        apellido: "Potter",
-        telefono: 123456,
-        mail: "elniñoquevivio@gmail.com" 
-    }
-]
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-app.get("/productos", (req, res) => {
-    res.render('productos', {
-        productos: productos
+app.get('/formulario', (req, res) => {
+    res.render('cargado', {
+        productos
     })
 })
 
-app.use(express.json())
-app.use('/api', express.static("public"))
-app.use('/api/productos', productosApi)
+app.post("/cargado", (req, res) => {
+    productos.push(req.body)
+    res.redirect('/formulario')
+    res.send(req.body)
+})
 
-let descargaImg = multer({storage})
-
-app.post('/api/descarga', descargaImg.single('archivo'), (req, res) => {
-    res.send({message: 'ok'})
+app.get('/menu', (req, res) => {
+    res.render('productos', {
+        productos: productos
+    })
 })
