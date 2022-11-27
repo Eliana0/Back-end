@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const handlebars = require('express-handlebars')
+const pug = require('pug')
 
 const servidor = app.listen(8080, ()=> console.log("hola"))
 
@@ -11,10 +12,10 @@ const productos = []
 
 app.engine('handlebars', handlebars.engine())
 app.set("views", "./views");
-app.set("view engine", "handlebars");
+app.set("view engine", "pug");
 
 app.get('/formulario', (req, res) => {
-    res.render(`home`)
+    res.render(`form`)
 })
 
 app.post("/formulario", (req, res) => {
@@ -23,21 +24,8 @@ app.post("/formulario", (req, res) => {
     res.send(req.body)
 })
 
-app.get('/menu', (req, res) => {
-    res.render('menu', {
+app.get('/productos', (req, res) => {
+    res.render('home', {
         productos: productos
     })
 })
-
-/* app.get('/formulario', (req, res) => {
-    res.render('cargado', {
-        productos
-    })
-})
-
-
-app.get('/menu', (req, res) => {
-    res.render('productos', {
-        productos: productos
-    })
-}) */
