@@ -18,14 +18,9 @@ app.get('/formulario', (req, res) => {
 })
 
 app.post("/formulario", (req, res) => {
-    elementos= req.body
-    if (elementos.nombre && elementos.foto && elementos.precio){
         productos.push(req.body)
         res.redirect('/formulario')
         res.send(req.body)
-    }else{
-        res.send("Por favor, ingrese todos los datos")
-    }
 })
 
 app.get('/menu', (req, res) => {
