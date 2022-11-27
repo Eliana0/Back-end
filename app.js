@@ -1,40 +1,43 @@
 const express = require("express")
 const app = express()
-const multer = require("multer")
+const handlebars = require('express-handlebars')
 
 const servidor = app.listen(8080, ()=> console.log("hola"))
-
-let storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, "public/img")
-    },
-    filename: function(req, file, cb){
-        cb(null, file.originalname)
-    }
-})
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const productos = []
 
+app.engine('handlebars', handlebars.engine())
 app.set("views", "./views");
-app.set("view engine", "ejs");
+app.set("view engine", "handlebars");
 
 app.get('/formulario', (req, res) => {
-    res.render('cargado', {
-        productos
-    })
+    res.render(`home`)
 })
 
-app.post("/cargado", (req, res) => {
+app.post("/formulario", (req, res) => {
     productos.push(req.body)
     res.redirect('/formulario')
     res.send(req.body)
 })
 
 app.get('/menu', (req, res) => {
-    res.render('productos', {
+    res.render('menu', {
         productos: productos
     })
 })
+
+/* app.get('/formulario', (req, res) => {
+    res.render('cargado', {
+        productos
+    })
+})
+
+
+app.get('/menu', (req, res) => {
+    res.render('productos', {
+        productos: productos
+    })
+}) */
