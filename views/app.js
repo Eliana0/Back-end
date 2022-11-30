@@ -27,11 +27,11 @@ while(usuario === ""){
     usuario = prompt("Escriba el nombre de usuario")
 }
 
-socket.on("newUser", alert("new User connected"))
-
-let elemento = document.getElementById("elemento")
-elemento.addEventListener(`kayup`, e => {
+let chatBox = document.getElementById("chatBox")
+chatBox.addEventListener(`kayup`, e => {
     if(e.key === "Enter"){
-        socket.emit(`message`, {user, message: elemento.value})
+        socket.emit(`message`, { usuario, message: chatBox.value })
     }
 })
+
+socket.on("elemento", () => alert("nuevo usuario conectado"))

@@ -6,8 +6,8 @@ const { Server } = require("socket.io")
 const PORT = process.env.PORT || 8080
 const servidor = app.listen(8080, ()=> console.log(`hola ${PORT}`))
 
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+/* app.use(express.json()) */
+/* app.use(express.urlencoded({extended: true})) */
 app.use(express.static('./views'))
 
 const io = new Server(servidor)
@@ -19,9 +19,8 @@ app.set("views", "./views");
 app.set("view engine", "handlebars"); 
 
 io.on('connection', (socket) => {
-    console.log("Usuario conectado")
     socket.broadcast.emit(`elemento`)
-    socket.on("elemento", data = console.log(data))
+    socket.on(`message`, data => console.log(data))
 })
 
 /* io.on('connection', (socket) => {
