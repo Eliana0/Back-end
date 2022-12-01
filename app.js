@@ -24,6 +24,9 @@ io.on('connection', (socket) => {
         productos.push(data)
         io.emit(`mensaje`, productos)
     })
+    socket.on(`usuario registrado`, data => {
+        socket.broadcast.emit("elemento", data)
+    })
 })
 
 app.get('/', (req, res) => {
