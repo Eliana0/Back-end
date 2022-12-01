@@ -1,25 +1,5 @@
-/* const socket = io()
-
-let nombre = document.getElementById("nombre")
-let enviar = document.getElementById("enviar")
-
-nombre.addEventListener(`keyup`, (e) => {
-    if(e.key === "Enter"){
-        socket.emit(`c`, nombre.value)
-    }
-})
-
-socket.on(`mensaje`, data => {
-    let chat = ""
-    data.forEach(text => {
-        chat += `${text} </br>`
-    });
-    document.getElementById(`mensaje`).innerHTML = chat
-    nombre.value = ""
-}) */
-
 const socket = io()
-console.log("Hola Mundo")
+
 let usuario = prompt("Escriba el nombre de usuario")
 
 while(usuario === ""){
@@ -27,11 +7,24 @@ while(usuario === ""){
     usuario = prompt("Escriba el nombre de usuario")
 }
 
-let chatBox = document.getElementById("chatBox")
-chatBox.addEventListener(`kayup`, e => {
+let nombre = document.getElementById("nombre")
+let enviar = document.getElementById("enviar")
+
+nombre.addEventListener(`keyup`, (e) => {
     if(e.key === "Enter"){
-        socket.emit(`message`, { usuario, message: chatBox.value })
+        if(nombre.value.trim().length>0){
+            socket.emit(`c`, { usuario, mensaje: nombre.value.trim() })
+            nombre.value = ""
+        }
     }
 })
-
 socket.on("elemento", () => alert("nuevo usuario conectado"))
+
+socket.on(`mensaje`, data => {
+    let mensaje = document.getElementById(`mensaje`)
+    let chats = ""
+    data.forEach(chat => {
+        chats += JSON.stringify(chat)
+    });
+    mensaje.innerHTML = chats
+})
