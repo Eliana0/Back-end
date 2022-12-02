@@ -12,6 +12,7 @@ app.use(express.static('./views'))
 
 const io = new Server(servidor)
 
+const chat = []
 const productos = []
 
 app.engine('handlebars', handlebars.engine())
@@ -19,14 +20,19 @@ app.set("views", "./views");
 app.set("view engine", "handlebars"); 
 
 io.on('connection', (socket) => {
-    console.log("Usuario conectado")
     socket.on(`c`, data => {
-        productos.push(data)
-        io.emit(`mensaje`, productos)
+        chat.push(data)
+        io.emit(`mensaje`, chat)
     })
     socket.on(`usuario registrado`, data => {
         socket.broadcast.emit("elemento", data)
     })
+    socket.on("objeto", data => {
+        productos.push(data)
+        io.emit("menu", productos)
+    })
+    io.emit(`mensaje`, chat)
+    io.emit("menu", productos)
 })
 
 app.get('/', (req, res) => {
