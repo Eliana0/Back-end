@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const app = express()
-const productos = './productos.txt'
-const carrito = `./cart.js`
 const fecha = new Date()
 
 const Content = require('../Contents/ContentCart.js')
@@ -44,9 +42,13 @@ let cart = {
 }
 
 router.post('/', (req, res)=> {
+    if(!cart.timestamp && !cart.productos){
+        res.json({message: "por favor, rellene los campos timestamp y productos"})
+    }else{
         let body = req.body;
-        content.CreateCart(cart);
-        res.json({message: `${cart}`, producto: body}) 
+        let create = content.CreateCart(cart);
+        create ? res.json({message: `${cart}`, producto: body}) : res.json({message: `No se ha ecreado el producto`})
+    }
 })
 
 router.delete('/:id', (req, res) => {

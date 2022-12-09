@@ -1,7 +1,5 @@
 const fs = require('fs');
-const { stringify } = require('querystring');
-const carrito = `./cart.txt`
-const productos = `./productos.txt`
+const carrito = `./Txt/cart.txt`
 
 class ContentCart {
     CreateCart = async(cart) => {

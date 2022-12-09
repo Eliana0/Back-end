@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { stringify } = require('querystring');
-const menu = './productos.txt'
+const menu = './Txt/productos.txt'
 
 class Contenedor {
     Save = async(archivo) => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const app = express()
-const productos = './productos.txt'
+const productos = './Txt/productos.txt'
 const fecha = new Date()
 
 const Contenedor = require('../Contents/Content.js')
