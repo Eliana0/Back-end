@@ -1,7 +1,7 @@
 [
   {
     "nombre": "Flan",
-    "timestamp": sabado, 3 de diciembre de 2022 20:18:12,
+    "timestamp": "Wed Dec 07 2022 14:35:05 GMT-0300 (hora estándar de Argentina)",
     "descripción": [
       "azucar",
       "leche",
@@ -16,7 +16,7 @@
   },
   {
     "nombre": "Pizza",
-    "timestamp": sabado, 3 de diciembre de 2022 20:18:12,
+    "timestamp": "Wed Dec 07 2022 14:35:05 GMT-0300 (hora estándar de Argentina)",
     "descripción": [
       "pan",
       "salsa",
@@ -31,7 +31,7 @@
   },
   {
     "nombre": "Hamburguesa",
-    "timestamp": sabado, 3 de diciembre de 2022 20:18:12,
+    "timestamp": "Wed Dec 07 2022 14:35:05 GMT-0300 (hora estándar de Argentina)",
     "descripción": [
       "pan",
       "carne",
@@ -46,7 +46,7 @@
   },
   {
     "nombre": "Milanesa Napolitana",
-    "timestamp": sabado, 3 de diciembre de 2022 20:18:12,
+    "timestamp": "Wed Dec 07 2022 14:35:05 GMT-0300 (hora estándar de Argentina)",
     "descripción": [
       "milanesa",
       "salsa",
@@ -59,19 +59,33 @@
     "id": 4
   },
   {
-    "nombre": "Cheesecake",
-    "timestamp": sabado, 3 de diciembre de 2022 20:18:12,
+    "nombre": "Papas fritas",
+    "timestamp": "Wed Dec 07 2022 14:48:13 GMT-0300 (hora estándar de Argentina)",
     "descripción": [
-      "frutos del bosque",
-      "leche condensada",
-      "queso crema",
-      "azucar",
-      "galleta",
-      "crema"
+      "papas",
+      "sal",
+      "queso",
+      "aceite"
     ],
-    "foto": "https://recipesbycarina.com/wp-content/uploads/2017/06/Berry-Cheesecake-Recipe.jpg",
-    "precio": 1000,
-    "stock": 25,
+    "foto": "https://th.bing.com/th/id/R.3cd70497d2b8b97e208007219f1e647a?rik=hZ3ziYRkoDYKPQ&pid=ImgRaw&r=0",
+    "precio": 1600,
+    "stock": 12,
     "id": 5
-  }
+  },
+  {
+    "nombre": "Tacos",
+    "timestamp": "Thu Dec 08 2022 19:44:47 GMT-0300 (hora estándar de Argentina)",
+    "descripción": [
+      "tortilla",
+      "carne",
+      "cebolla",
+      "morrón",
+      "queso",
+      "salsa"
+      ],
+      "foto": "https://th.bing.com/th/id/R.b9e921aeea76c1f79e4633e40543e0ee?rik=6rz2nNSRd7t3Ew&pid=ImgRaw&r=0",
+      "precio": 2400,
+      "stock": 4,
+      "id": 6
+      }
 ]

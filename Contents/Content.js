@@ -22,18 +22,17 @@ class Contenedor {
         }
     }
     getAll = async() => {
-        console.log("hola")
         if(fs.existsSync(menu)){
-            let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
+            let read = JSON.parse(await fs.promises.readFile(menu, `utf-8`))
             return read
         }else {
             return {message: "No se ha encontrado el elemento"}
         }
     }    
-    getById = async(Number) => {
+    getById = async(number) => {
         if(fs.existsSync(menu)){
-            let read = JSON.parse(await fs.promises.readFile(menu, 'utf-8'));
-            let encuentraId = read.find(e => e.id == Number)
+            let read = JSON.parse(await fs.promises.readFile(menu, `utf-8`));
+            let encuentraId = read.find(e => e.id == number)
             return encuentraId
         }else {
             return {message: "No se ha encontrado el elemento"} 
