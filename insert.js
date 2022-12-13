@@ -3,11 +3,12 @@ const knex = require(`knex`);
 
 const database = knex(options)
 
-database.schema.createTable(`cars`, table => {
-    table.increments(`id`);
-    table.string(`name`, 20);
-    table.integer(`price`);
-})
-    .then(()=> console.log(`Table created!`))
+let cars = [
+    { name: `milanesa`, precio: `1400` },
+    { name: `Pollo frito`, precio: `2100` }
+]
+
+database(`cars`).insert(cars)
+    .then(response => console.log(response))
     .catch(err => console.log(err))
     .finally(() => database.destroy())
