@@ -1,13 +1,9 @@
-const options = require(`./options/mysql.config.js`);
-const knex = require(`knex`);
+const express = require("express")
+const productosApi = require(`./router.js`)
+const app = express()
+const PORT = process.env.PORT || 8080
+const servidor = app.listen(8080, ()=> console.log(`hola ` + PORT))
 
-const database = knex(options)
-
-database.schema.createTable(`cars`, table => {
-    table.increments(`id`);
-    table.string(`name`, 20);
-    table.integer(`price`);
-})
-    .then(()=> console.log(`Table created!`))
-    .catch(err => console.log(err))
-    .finally(() => database.destroy())
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use('/productos', productosApi)

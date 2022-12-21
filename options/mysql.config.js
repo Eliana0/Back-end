@@ -4,7 +4,8 @@ const options = {
         host: `127.0.0.1`,
         user: `root`,
         password: ``,
-        database: `16_knex_mariadb`
+        database: `elianadb`
     }
 }
+
 module.exports = options;
